@@ -1,0 +1,507 @@
+@font-face {
+    font-family: "Lato Light";
+    src: url("fonts/Lato-Light.ttf");
+}
+
+@font-face {
+    font-family: "Lato Regular";
+    src: url("fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Lato Bold";
+    src: url("fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Lato Black";
+    src: url("fonts/Lato-Black.ttf");
+}
+
+:root {
+    --primary-green:#0eae7b;
+    --secondary-blue:#0e68a7;
+    --additional-blue:#002e4f;
+    --gray-1:#5d5d5d;
+    --gray-2:#b4b4b4;
+    --gray-3:#d7d7d7;
+    --gray-4:#fbfbfb;
+    --open:#19d46d;
+    --closed:#f52828;
+    --stores:#11b980;
+    --restaurants:#199bee;
+    --entertainment:#ee4040;
+    --services:#ffd800;
+    --lodging:#ff8a1c;
+    --white:#fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato Regular", sans-serif;
+}
+
+.container {
+    max-width: 1340px;
+    width: 100%;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.control-panel {
+    height: 40px;
+    background: var(--gray-4);
+    box-shadow: inset 0 0 4px rgba(0,0,0,0.1);
+}
+
+.control-menu {
+    display: flex;
+    height: 38px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+a.control-item {
+    text-decoration: none;
+    color:var(--secondary-blue);
+    font-family: "Lato Bold";
+    font-size: 0.95em;
+}
+
+a.control-item:hover {
+    text-decoration: underline;
+}
+
+.dot-separator {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background: var(--gray-3);
+    margin: 0 10px;
+}
+
+.nav-panel {
+    height: 90px;
+}
+
+.columns {
+    display: flex;
+    justify-content:  space-between;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0 20px;
+}
+
+.nav-panel .container {
+    align-items: center;
+    height: 100%;
+}
+
+.columns > * {
+    flex:1;
+}
+
+.logo-area {
+    max-width: 200px;
+    height: 40px;
+}
+
+.logo {
+    height: 100%;
+}
+
+.nav-menu {
+    max-width: 570px;
+    display:  flex;
+    height: 100%;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+.nav-item {
+    text-decoration: none;
+    font-family: "Lato Bold";
+    text-transform: uppercase;
+    color:var(--gray-1);
+    cursor: pointer;
+    font-size: 0.85em;
+    padding: 0 18px;
+    display: flex;
+    align-items:  center;
+    border-bottom: 3px solid var(--white);
+    padding-top: 3px;
+    transition: .18s ease-out;
+}
+
+.nav-menu .nav-item:last-child {
+    margin-right: -18px;
+}
+
+.nav-item:hover {
+    color:var(--gray-2);
+}
+
+.nav-item.item-stores:hover {
+    border-color:var(--stores);
+}
+
+.nav-item.item-restaurants:hover {
+    border-color:var(--restaurants);
+}
+
+.nav-item.item-entertainment:hover {
+    border-color:var(--entertainment);
+}
+
+.nav-item.item-services:hover {
+    border-color:var(--services);
+}
+
+.nav-item.item-lodging:hover {
+    border-color:var(--lodging);
+}
+
+.map-area {
+    height: 580px;
+    position: relative;
+}
+
+.map-content {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.map-overlay {
+    height: 200px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
+    opacity: 0.5;
+}
+
+h1.title {
+    text-align: center;
+    font-family: "Lato Light";
+    font-size: 2.4em;
+    font-weight: normal;
+    color:var(--gray-1);
+    margin: 50px 0;
+}
+
+h1.title > b {
+    font-family: "Lato Black";
+    font-weight: normal;
+}
+
+.map-content h1.title {
+    color:#fff;
+    font-size: 3.7em;
+    text-shadow: 0 1px 7px rgba(0,0,0,0.25);
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.search-row {
+    width: 912px;
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 1px 7px rgba(0,0,0,0.25);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    margin-bottom: -30px;
+}
+
+.search-input-part {
+    height: 100%;
+    outline: none;
+    border: none;
+    padding-top: 2px;
+    font-size: 1.05em;
+    color: var(--gray-1);
+    font-family: "Lato Bold";
+}
+
+.location-input {
+    width: 50%;
+    background-image: url(img/location-gray-icon.svg), url(img/search-green-icon.svg);
+    background-size: 23px, 26px;
+    background-position: center left 13px, center right 19px;
+    background-repeat: no-repeat;
+    padding-left: 49px;
+    padding-right: 64px;
+}
+
+.search-input {
+    width: calc(50% - 90px);
+}
+
+.search-row label {
+    width: 90px;
+    text-align: center;
+    color: var(--gray-1);
+    font-family: "Lato Bold";
+    font-size: 1.05em;
+}
+
+/**************************************************/
+
+.search-input-part::-webkit-input-placeholder{
+    font-family: "Lato Regular";
+    color: var(--gray-2) !important;
+    opacity:1;
+}
+
+.search-input-part:-ms-input-placeholder{
+    font-family: "Lato Regular";
+    color: var(--gray-2) !important;
+    opacity:1;
+}
+
+.search-input-part::-moz-placeholder{
+    font-family: "Lato Regular";
+    color: var(--gray-2) !important;
+    opacity:1;
+}
+
+.search-input-part::placeholder{
+    font-family: "Lato Regular";
+    color: var(--gray-2) !important;
+    opacity:1;
+}
+
+.search-input-part::-ms-clear {
+    display: none;
+}
+
+/**************************************************/
+
+.categories-area {
+    background: var(--gray-4);
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.categories-area .columns {
+    align-items: flex-start;
+}
+
+.category-column {
+    max-width: 240px;
+    background: var(--white);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.category-title {
+    height: 50px;
+    font-family: "Lato Bold";
+    font-weight: normal;
+    color:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.title-stores {
+    background: var(--stores);
+}
+
+.title-restaurants {
+    background: var(--restaurants);
+}
+
+.title-entertainment {
+    background: var(--entertainment);
+}
+
+.title-services {
+    background: var(--services);
+}
+
+.title-lodging {
+    background: var(--lodging);
+}
+
+.subcategories-list {
+    margin: 0;
+    padding: 10px 10px 6px 10px;
+    list-style: none;
+}
+
+.subcategories-list li {
+    margin-bottom: 5px;
+}
+
+.subcategories-list .subcategory-link {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color:var(--gray-1);
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--white);
+    transition: .12s ease-out;
+}
+
+.subcategory-link i {
+    max-width: 30px;
+    font-style: normal;
+    text-align: right;
+    color: var(--secondary-blue);
+    font-family: "Lato Bold";
+}
+
+.subcategories-list .subcategory-link:hover {
+    color:var(--secondary-blue);
+    border-bottom-color: var(--gray-3);
+}
+
+.trending {
+    padding-bottom: 30px;
+}
+
+.trending-item {
+    max-width: 240px;
+    background: var(--white);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    margin: 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--white);
+    transition: .21s ease-out;
+}
+
+.trending-item:hover {
+    box-shadow: 0 2px 15px rgba(0,0,0,0.25);
+}
+
+.trending-item > a {
+    text-decoration: none;
+}
+
+.item-image {
+    width: 100%;
+    height:198px;
+    background-image: url(img/item1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--gray-3);
+}
+
+.trending-item figcaption {
+    color:var(--gray-1);
+    padding: 12px 10px 8px 10px;
+}
+
+.item-title {
+    font-family: "Lato Bold";
+}
+
+.trending-item .item-title {
+    margin-bottom: 5px;
+    font-size: 0.98em;
+}
+
+.item-conversations,
+.item-details .distance {
+    font-size:0.75em;
+}
+
+.item-conversations {
+    background-image: url("img/conversations-icon.svg");
+    background-size: 20px;
+    background-position: center left;
+    background-repeat: no-repeat;
+    padding: 2px 0 2px 25px;
+    margin-bottom: 5px;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+}
+
+.hours-now {
+    font-family: "Lato Bold";
+    font-size:0.7em;
+    width: 90px;
+    height: 24px;
+    border:2px solid lightgrey;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    background-position: center left 3px;
+    background-size: 14px;
+    background-repeat: no-repeat;
+}
+
+.hours-now.open-now {
+    border-color:var(--open);
+    color:var(--open);
+    background-image: url("img/open-now-icon.svg");
+}
+
+.hours-now.closed-now {
+    border-color:var(--closed);
+    color:var(--closed);
+    background-image: url("img/closed-now-icon.svg");
+}
+
+.trending-item.item-stores {
+    border-color:var(--stores);
+}
+
+.trending-item.item-restaurants {
+    border-color:var(--restaurants);
+}
+
+.trending-item.item-entertainment {
+    border-color:var(--entertainment);
+}
+
+.trending-item.item-services {
+    border-color:var(--services);
+}
+
+.trending-item.item-lodging {
+    border-color:var(--lodging);
+}
+
+footer {
+    height: 80px;
+    background: var(--additional-blue);
+}
+
+footer .columns {
+    height: 100%;
+    align-items: center;
+    padding-bottom: 4px;
+}
+
+.secondary-nav a {
+    display: inline-block;
+    color:var(--white);
+    font-size: 0.75em;
+    text-decoration: none;
+    margin-right: 25px;
+    transition: .12s ease-out;
+    opacity: 1;
+}
+
+.secondary-nav a:hover {
+    opacity: 0.5;
+}
